@@ -1,0 +1,7 @@
+defaultTasks ':jacamo-web-app:runJaCaMo'
+
+allprojects {
+    repositories {
+        jcenter()
+    }
+}

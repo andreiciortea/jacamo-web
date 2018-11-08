@@ -1,0 +1,3 @@
+include 'jacamo-web-app', 'cartago'
+
+rootProject.name = 'jacamo-web'

@@ -1,0 +1,9 @@
+mas hellojacamo {
+  
+  agent sample_agent
+  
+  asl-path: src/main/agt
+    src/main/agt/inc
+  
+  platform: net.sf.jacamo.web.HttpAPI()
+}

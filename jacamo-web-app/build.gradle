@@ -1,0 +1,45 @@
+apply plugin: 'java'
+apply plugin: 'eclipse'
+
+defaultTasks 'runJaCaMo'
+
+sourceSets {
+  main {
+    java {
+      srcDir 'src/main/java/'
+      srcDir 'src/main/env/'
+    }
+  }
+}
+
+repositories {
+  jcenter()
+
+  maven { url "http://jacamo.sourceforge.net/maven2" }
+  maven { url "http://jade.tilab.com/maven/" }
+
+  flatDir {
+    dirs '../cartago/build/dist/cartago-2.4-SNAPSHOT/lib'
+  }
+}
+
+dependencies {
+  compile name: 'cartago-2.4-SNAPSHOT'
+  compile name: 'jaca-2.4-SNAPSHOT'
+  compile group: 'org.jacamo' , name: 'jacamo'   , version: '0.8-SNAPSHOT'
+  
+  compile group: 'org.rapidoid', name: 'rapidoid-quick', version: '5.5.5'
+  
+  runtime group: 'org.jason-lang' , name: 'jason'   , version: '0.4-SNAPSHOT'
+}
+
+task runJaCaMo(type: JavaExec, dependsOn: [classes, ':cartago:makeDist']) {  
+  if(project.hasProperty('jcmFile')){
+    args(jcmFile)
+  } else {
+    args('main.jcm')
+  }
+  
+  classpath = sourceSets.main.runtimeClasspath
+  main = 'jacamo.infra.JaCaMoLauncher'
+}
