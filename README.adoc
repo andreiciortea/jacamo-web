@@ -20,6 +20,7 @@ Contains 2 sub-projects:
 git clone --recursive git@github.com:andreiciortea/jacamo-web.git
 ----
 
+[start=2]
 . Build the CArtAgO dist:
 
 ----
@@ -27,6 +28,7 @@ cd cartago
 gradle makeDist
 ----
 
+[start=3]
 . Run this project (in `jacamo-web` or `jacamo-web-app`):
 
 ----
@@ -35,6 +37,7 @@ gradle makeDist
 
 == Sample Request
 
+[source]
 ---
 curl -i -X GET http://localhost:8080/workspaces/
 
