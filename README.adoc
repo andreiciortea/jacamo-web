@@ -1,0 +1,83 @@
+= JaCaMo-Web (playground)
+
+Contains 2 sub-projects:
+
+* a JaCaMo application for toying around (`jacamo-web-app`)
+
+* a custom CArtAgO distribution (`cartago`)
+
+
+== Prerequisites
+
+* JDK 8+
+
+
+== Start to Hack
+
+. Clone this project incl. its CArtAgO submodule:
+
+----
+git clone --recursive git@github.com:andreiciortea/jacamo-web.git
+----
+
+. Build the CArtAgO dist:
+
+----
+cd cartago
+gradle makeDist
+----
+
+. Run this project (in `jacamo-web` or `jacamo-web-app`):
+
+----
+./gradlew
+----
+
+== Sample Request
+
+---
+curl -i -X GET http://localhost:8080/workspaces/
+
+
+HTTP/1.1 200 OK
+Connection: keep-alive
+Server: Rapidoid
+Date: Thu, 08 Nov 2018 16:09:40 GMT
+Content-Type: application/json
+Content-Length: 390
+
+[
+    {
+        "iri": "http://localhost:8080/workspaces/test",
+        "name": "test",
+        "agents": [
+            "sample_agent"
+        ],
+        "artifacts": [
+            "node",
+            "console",
+            "blackboard",
+            "sample_agent-body",
+            "workspace",
+            "manrepo"
+        ]
+    },
+    {
+        "iri": "http://localhost:8080/workspaces/main",
+        "name": "main",
+        "agents": [
+            "sample_agent",
+            "JaCaMo_Launcher"
+        ],
+        "artifacts": [
+            "node",
+            "console",
+            "blackboard",
+            "sample_agent-body",
+            "workspace",
+            "JaCaMo_Launcher-body",
+            "manrepo"
+        ]
+    }
+]
+---
