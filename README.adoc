@@ -28,7 +28,7 @@ cd cartago
 gradle makeDist
 ----
 
-[start=3]
+[start=3	]
 . Run this project (in `jacamo-web` or `jacamo-web-app`):
 
 ----
@@ -38,7 +38,7 @@ gradle makeDist
 == Sample Request
 
 [source]
----
+----
 curl -i -X GET http://localhost:8080/workspaces/
 
 
@@ -83,4 +83,4 @@ Content-Length: 390
         ]
     }
 ]
----
+----
