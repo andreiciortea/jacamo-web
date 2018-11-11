@@ -1,6 +1,11 @@
 // Agent sample_agent in project hellojacamo
 
+//{namespace(node,"http://localhost:8081/workspaces/")}
+
 /* Initial beliefs and rules */
+
+remote_wksp("http://localhost:8081/workspaces/remote1").
+local_wksp("local1").
 
 /* Initial goals */
 
@@ -8,11 +13,24 @@
 
 /* Plans */
 
-+!start : true <- 
++!start : local_wksp(LocalWorkspaceName) <- 
   .print("hello world.");
-  createWorkspace("test");
-  joinWorkspace("test", WkspId);
-  .print("hello from test workspace!").
+  createWorkspace(LocalWorkspaceName);
+  joinWorkspace(LocalWorkspaceName, LocalWkspId);
+  .print("hello from local workspace!");
+  makeArtifact("clock", "net.sf.ex.ClockArtifact", [], _);
+  focusWhenAvailable("clock");
+  .print("Created clock artifact!");
+  start;
+  .print("Clock started!").
+//  .print("Joining remote workspace!");
+//  joinWorkspace("http://localhost:8081/workspaces/remote1", RemoteWkspId);
+//  .print("Hello from remote workspace!").
+
++tick : true <- .print("Tick!").
+
++counter(V) : true <- .print("New value: ", V).
+
 
 { include("$jacamoJar/templates/common-cartago.asl") }
 { include("$jacamoJar/templates/common-moise.asl") }

@@ -28,14 +28,38 @@ cd cartago
 gradle makeDist
 ----
 
-[start=3	]
+[start=3]
 . Run this project (in `jacamo-web` or `jacamo-web-app`):
 
 ----
 ./gradlew
 ----
 
-== Sample Request
+
+== Clock Demo
+
+A demo in which 2 agents (`bob` and `john`) join a remote workspace, focus on a clock artifact and start observing signals (ticks) and properties (a counter). After 5s, `bob` stops the clock.
+
+The nodes in this demo run on ports `8080` and `8081`.
+
+=== How to Run:
+
+. Build the CArtAgO dist (see above)
+
+. Start the first node:
+
+----
+gradle runJaCaMo -PjcmFile=main.jcm
+----
+
+[start=3]
+. Start the second node in another terminal:
+----
+gradle runJaCaMo -PjcmFile=main.jcm
+----
+
+
+== Sample Request 
 
 [source]
 ----
