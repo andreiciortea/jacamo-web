@@ -40,7 +40,7 @@ gradle makeDist
 
 A demo in which 2 agents (`bob` and `john`) join a remote workspace, focus on a clock artifact and start observing signals (ticks) and properties (a counter). After 5s, `bob` stops the clock.
 
-The nodes in this demo run on ports `8080` and `8081`.
+The nodes in this demo run on ports `8080` and `8081`. You can see a screen cast here: https://youtu.be/t6NjoaymVTg
 
 === How to Run:
 
@@ -55,7 +55,7 @@ gradle runJaCaMo -PjcmFile=main.jcm
 [start=3]
 . Start the second node in another terminal:
 ----
-gradle runJaCaMo -PjcmFile=main.jcm
+gradle runJaCaMo -PjcmFile=bob.jcm
 ----
 
 
